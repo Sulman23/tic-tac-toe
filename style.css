@@ -4,13 +4,9 @@
     box-sizing: border-box;
 }
 
-body {
-   /* background-color: aliceblue; */
-}
-
 .container {
    background: linear-gradient(to right, #2193b0    , #6dd5ed);
-   height: 100vh;
+   min-height: 100vh;
    display: flex;
    justify-content: center; 
    align-items: center;
@@ -21,7 +17,6 @@ h3.title {
     font-size: 33px;
     margin-top: 20px;
     margin-bottom: 30px;
-    color: rgb(40, 43, 46);
 }
 
 .info {
@@ -39,6 +34,7 @@ h3.title {
 
 .info .msg {
     color: rgb(174, 0, 243);
+    margin-bottom: 15px;
 }
 
 .info .btn {
@@ -54,15 +50,16 @@ h3.title {
 }
 
 .board .box {
-    background-color: royalblue;
+    background-color: rgb(49, 53, 66);
     border: 1px solid orange;
     font-size: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: beige;
 }
 
 .board .box:hover {
-    background-color: aqua;
+    background-color: rgb(114, 116, 116);
 }
