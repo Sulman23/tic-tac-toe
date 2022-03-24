@@ -2,8 +2,9 @@
 var boxes    = document.querySelectorAll(".box");
 var player   = document.getElementById("player");
 var wonMsg   = document.getElementById("wonMsg");
-var resetBtn = document.getElementById("reset");
 var winImg   = document.getElementById("winImg");
+var resetBtn = document.getElementById("reset");
+let resetImg = document.querySelector("#resetImg");
 
 // Declaring turn and won 
 var turn = "x";
@@ -35,7 +36,7 @@ wins.forEach((e) => {
     let c = boxes[e[2]].innerText;
     if((a === b) && (c ===b) && (a !== "")){
         wonMsg.innerText = a + " Won";
-        isgameover = true;
+        won = true;
         winImg.src = "images/win.gif";
         console.log(winImg); 
 
@@ -56,11 +57,16 @@ boxes.forEach((box) => {
         // turn of playe 
         player.innerHTML = `Turn of ${turn}`;
         checkWin();
+
     })
 
-         // Reset the game 
-        resetBtn.addEventListener("click", () => {
-            box.innerHTML = "";
-            wonMsg.innerHTML = "";
-        });
+    // Reset the game 
+    const resetGame = () => {
+        box.innerHTML = "";
+        wonMsg.innerHTML = "";
+        resetImg.innerHTML = "";
+
+    };
+    resetBtn.addEventListener("click", resetGame);
+
 });
