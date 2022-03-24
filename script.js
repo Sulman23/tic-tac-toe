@@ -14,6 +14,8 @@ const changeTurn = () => {
     return turn === "x" ? "o" : "x"; 
 }
 
+const checkWin = () => {
+// Function to check for a win
 // winnig combinations
 const wins = [
     [0,1,2],
@@ -27,10 +29,19 @@ const wins = [
 ];
 
 // logic for winning the game 
-wins.forEach((win) => {
-   
-})
+wins.forEach((e) => {
+    let a = boxes[e[0]].innerText;
+    let b = boxes[e[1]].innerText;
+    let c = boxes[e[2]].innerText;
+    if((a === b) && (c ===b) && (a !== "")){
+        wonMsg.innerText = a + " Won";
+        isgameover = true;
+        winImg.src = "images/win.gif";
+        console.log(winImg); 
 
+    }
+});
+}
 
 // logic for player turn and reset the game
 boxes.forEach((box) => {
@@ -40,20 +51,16 @@ boxes.forEach((box) => {
         if (box.innerText === "") {
             box.innerText = turn;
             turn = changeTurn();
-            console.log(box)
+            // console.log(turn);
         }
         // turn of playe 
         player.innerHTML = `Turn of ${turn}`;
+        checkWin();
     })
 
-    // Reset the game 
-    resetBtn.addEventListener("click", () => {
-        box.innerHTML = "";
-    });
-
-})
-
-
-
-
-
+         // Reset the game 
+        resetBtn.addEventListener("click", () => {
+            box.innerHTML = "";
+            wonMsg.innerHTML = "";
+        });
+});
