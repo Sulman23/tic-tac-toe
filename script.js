@@ -8,12 +8,12 @@ var resetBtn = document.getElementById("reset");
 let resetImg = document.querySelector("#resetImg");
 
 // Declaring turn and won status 
-var turn = "x";
+var turn = "X";
 var won  = false;
 
 // Function to change the turn
 const changeTurn = () => {
-    return turn === "x" ? "o" : "x";   
+    return turn === "X" ? "O" : "X";   
 }
 
 // Function to check for a win
@@ -40,8 +40,7 @@ wins.forEach((win) => {
         won = true;
         winImg.src = "win.gif";
          // if win then stop the game
-            console.log(boxes);
-       
+        //  console.log(boxes);
     }
 });
 }
@@ -55,26 +54,30 @@ boxes.forEach((box) => {
         // check if box is empty then write the x or o
         if (box.innerText === "") {
             box.innerText = turn;
+            // change the turn like x to o
+            turn = changeTurn();
         }
-        // change the turn like x to o
-        turn = changeTurn();
-        // turn of player
-        player.innerText = `Turn of ${turn}`;
         // Check the win
         checkWin();
-       
+        if (!won) {       
+            // turn of player
+            player.innerText = `Turn of ${turn}`;
+        }
+        // console.log(won);
     }
+
+    
 
     // Reset the game 
     const resetGame = () => {
         box.innerHTML = "";
         wonMsg.innerHTML = "";
         resetImg.innerHTML = "";
-        player.innerText = "Turn of x";
-        turn = "x";
+        player.innerText = "Turn of X";
+        turn = "X";
         won = false;
     };
-
+  
     box.addEventListener("click", boxClicked);
     resetBtn.addEventListener("click", resetGame);
 
