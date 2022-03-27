@@ -54,12 +54,17 @@ h3.title {
     border: 1px solid orange;
     font-size: 3rem;
     display: flex;
+    cursor: pointer;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     color: beige;
 }
 
 .board .box:hover {
     background-color: rgb(114, 116, 116);
+}
+
+.win-img {
+    width: 100px;
+    height: 65px;
 }

@@ -1,4 +1,5 @@
 // Getting DOM Elements
+const board = document.getElementById("board");
 var boxes    = document.querySelectorAll(".box");
 var player   = document.getElementById("player");
 var wonMsg   = document.getElementById("wonMsg");
@@ -6,17 +7,17 @@ var winImg   = document.getElementById("winImg");
 var resetBtn = document.getElementById("reset");
 let resetImg = document.querySelector("#resetImg");
 
-// Declaring turn and won 
+// Declaring turn and won status 
 var turn = "x";
 var won  = false;
 
-// function to change the turn
+// Function to change the turn
 const changeTurn = () => {
-    return turn === "x" ? "o" : "x"; 
+    return turn === "x" ? "o" : "x";   
 }
 
-const checkWin = () => {
 // Function to check for a win
+const checkWin = () => {
 // winnig combinations
 const wins = [
     [0,1,2],
@@ -30,43 +31,51 @@ const wins = [
 ];
 
 // logic for winning the game 
-wins.forEach((e) => {
-    let a = boxes[e[0]].innerText;
-    let b = boxes[e[1]].innerText;
-    let c = boxes[e[2]].innerText;
-    if((a === b) && (c ===b) && (a !== "")){
+wins.forEach((win) => {
+    let a = boxes[win[0]].innerText;
+    let b = boxes[win[1]].innerText;
+    let c = boxes[win[2]].innerText;
+    if((a === b) && (b === c) && (a !== "")){
         wonMsg.innerText = a + " Won";
         won = true;
-        winImg.src = "images/win.gif";
-        console.log(winImg); 
-
+        winImg.src = "win.gif";
+         // if win then stop the game
+            console.log(boxes);
+       
     }
 });
 }
 
-// logic for player turn and reset the game
+// Game logic 
+// Getting every box from boxes
 boxes.forEach((box) => {
-    // turn on every box 
-    box.addEventListener("click", () => {
-        // check if box is not empty then write the x or o
+    // writing the turn on boxes
+    // box.addEventListener("click", boxClicked);
+    let boxClicked = () => {
+        // check if box is empty then write the x or o
         if (box.innerText === "") {
             box.innerText = turn;
-            turn = changeTurn();
-            // console.log(turn);
         }
-        // turn of playe 
-        player.innerHTML = `Turn of ${turn}`;
+        // change the turn like x to o
+        turn = changeTurn();
+        // turn of player
+        player.innerText = `Turn of ${turn}`;
+        // Check the win
         checkWin();
-
-    })
+       
+    }
 
     // Reset the game 
     const resetGame = () => {
         box.innerHTML = "";
         wonMsg.innerHTML = "";
         resetImg.innerHTML = "";
-
+        player.innerText = "Turn of x";
+        turn = "x";
+        won = false;
     };
+
+    box.addEventListener("click", boxClicked);
     resetBtn.addEventListener("click", resetGame);
 
 });
