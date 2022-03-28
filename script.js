@@ -1,12 +1,9 @@
 // Getting DOM Elements
-const board = document.getElementById("board");
 var boxes    = document.querySelectorAll(".box");
 var player   = document.getElementById("player");
 var info     = document.getElementById("info");
 var wonMsg   = document.getElementById("wonMsg");
-var winImg   = document.getElementById("winImg");
 var resetBtn = document.getElementById("reset");
-let resetImg = document.querySelector("#resetImg");
 
 // Declaring turn and won status 
 var turn = "X";
@@ -39,8 +36,7 @@ wins.forEach((win) => {
     if((a === b) && (b === c) && (a !== "")){
         wonMsg.innerText = a + " Won";
         won = true;
-        winImg.src = "win.gif";
-         // if win then stop the game
+
     }
 });
 }
@@ -63,7 +59,6 @@ boxes.forEach((box) => {
             player.innerText = `Turn of ${turn}`;
         }
         if (won == true) {
-            // console.log(info.classList);
             info.classList.remove("inactive");
         }
     }
@@ -72,7 +67,6 @@ boxes.forEach((box) => {
     const resetGame = () => {
         box.innerHTML = "";
         wonMsg.innerHTML = "";
-        resetImg.innerHTML = "";
         player.innerText = "Turn of X";
         info.classList.add("inactive");
         turn = "X";
