@@ -2,6 +2,7 @@
 const board = document.getElementById("board");
 var boxes    = document.querySelectorAll(".box");
 var player   = document.getElementById("player");
+var info     = document.getElementById("info");
 var wonMsg   = document.getElementById("wonMsg");
 var winImg   = document.getElementById("winImg");
 var resetBtn = document.getElementById("reset");
@@ -40,7 +41,6 @@ wins.forEach((win) => {
         won = true;
         winImg.src = "win.gif";
          // if win then stop the game
-        //  console.log(boxes);
     }
 });
 }
@@ -49,8 +49,7 @@ wins.forEach((win) => {
 // Getting every box from boxes
 boxes.forEach((box) => {
     // writing the turn on boxes
-    // box.addEventListener("click", boxClicked);
-    let boxClicked = () => {
+    let boxClicked =  () => {
         // check if box is empty then write the x or o
         if (box.innerText === "") {
             box.innerText = turn;
@@ -63,10 +62,11 @@ boxes.forEach((box) => {
             // turn of player
             player.innerText = `Turn of ${turn}`;
         }
-        // console.log(won);
+        if (won == true) {
+            // console.log(info.classList);
+            info.classList.remove("inactive");
+        }
     }
-
-    
 
     // Reset the game 
     const resetGame = () => {
@@ -74,10 +74,12 @@ boxes.forEach((box) => {
         wonMsg.innerHTML = "";
         resetImg.innerHTML = "";
         player.innerText = "Turn of X";
+        info.classList.add("inactive");
         turn = "X";
         won = false;
     };
-  
+    
+    // EventListeners 
     box.addEventListener("click", boxClicked);
     resetBtn.addEventListener("click", resetGame);
 

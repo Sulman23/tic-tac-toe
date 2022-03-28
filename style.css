@@ -22,28 +22,56 @@ h3.title {
     color: #333;
 }
 
-.info {
-    /* background-color: aliceblue; */
-    text-align: center;
-    padding: 5px;
-    font-family:'Times New Roman', Times, serif;
-}
 
-.info .player {
+.player {
     color: red;
     margin: 10px 0;
     font-size: 1.5rem;
     font-weight: 600;
+    background-color: black;
+    border: 2px solid yellow;
+    padding: 5px 30px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+
+.info {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:rgba(0, 0, 0, 0.56);
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.inactive {
+    display: none;
 }
 
 .info .msg {
-    color: rgb(174, 0, 243);
-    margin-bottom: 15px;
-    font-size: 48px;
+    background-color: rgba(800, 500, 330, 0.5);
+    padding: 5px 30px;
+    color: greenyellow;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    font-size: 50px;
 }
 
 .info .btn {
-    padding: 5px 15px;
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: blue;
+    color: aliceblue;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
 }
 
 .board {
