@@ -1,17 +1,17 @@
 // Getting DOM Elements
-var boxes    = document.querySelectorAll(".box");
-var player   = document.getElementById("player");
-var info     = document.getElementById("info");
-var wonMsg   = document.getElementById("wonMsg");
-var resetBtn = document.getElementById("reset");
+const boxes    = document.querySelectorAll(".box");
+const player   = document.getElementById("player");
+const info     = document.getElementById("info");
+const msg      = document.getElementById("wonMsg");
+const resetBtn = document.getElementById("reset");
 
 // Declaring turn and won status 
-var turn = "X";
-var won  = false;
+let turn = "X";  
+let won  = false;
 
 // Function to change the turn
 const changeTurn = () => {
-    return turn === "X" ? "O" : "X";   
+    return turn === "X" ? "O" : "X"; 
 }
 
 // Function to check for a win
@@ -33,10 +33,10 @@ wins.forEach((win) => {
     let a = boxes[win[0]].innerText;
     let b = boxes[win[1]].innerText;
     let c = boxes[win[2]].innerText;
+    // Now check the win
     if((a === b) && (b === c) && (a !== "")){
-        wonMsg.innerText = a + " Won";
+        msg.innerText = a + " Won";
         won = true;
-
     }
 });
 }
@@ -54,24 +54,33 @@ boxes.forEach((box) => {
         }
         // Check the win
         checkWin();
-        if (!won) {       
-            // turn of player
-            player.innerText = `Turn of ${turn}`;
-        }
+        // Won or Draw
         if (won == true) {
             info.classList.remove("inactive");
+        } else if (checkDraw()) {
+            info.classList.remove("inactive");
+            msg.innerText = "Draw ";
+        } else {       
+            // turn of player
+            player.innerText = `Turn of ${turn}`;
         }
     }
 
     // Reset the game 
     const resetGame = () => {
         box.innerHTML = "";
-        wonMsg.innerHTML = "";
+        msg.innerHTML = "";
         player.innerText = "Turn of X";
         info.classList.add("inactive");
         turn = "X";
         won = false;
     };
+
+    const checkDraw = () => {
+       return [...boxes].every(cell => {
+           return cell.innerText == "X" || cell.innerText == "O";
+        });
+    }
     
     // EventListeners 
     box.addEventListener("click", boxClicked);

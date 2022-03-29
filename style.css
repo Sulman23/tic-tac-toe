@@ -23,12 +23,12 @@ h3.title {
 }
 
 .player {
-    color: red;
     margin: 10px 0;
     font-size: 1.5rem;
     font-weight: 600;
     background-color: black;
-    border: 2px solid yellow;
+    color: orange;
+    border: 2px solid rgb(228, 149, 4);
     padding: 5px 30px;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
@@ -53,10 +53,10 @@ h3.title {
 }
 
 .info .msg {
-    background-color: rgba(800, 500, 330, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 5px 30px;
     color: rgb(1, 243, 102);
-    border: 1px solid blue;
+    border: 1px solid rgb(1, 243, 102);
     margin-bottom: 5px;
     font-size: 50px;
 }
@@ -65,7 +65,7 @@ h3.title {
     margin-top: 10px;
     padding: 10px 20px;
     font-size: 18px;
-    background-color: blue;
+    background-color: rgb(146, 3, 3);
     color: aliceblue;
     border-radius: 5px;
     cursor: pointer;
