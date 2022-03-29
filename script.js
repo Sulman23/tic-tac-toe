@@ -76,6 +76,7 @@ boxes.forEach((box) => {
         won = false;
     };
 
+    // Check Draw 
     const checkDraw = () => {
        return [...boxes].every(cell => {
            return cell.innerText == "X" || cell.innerText == "O";
